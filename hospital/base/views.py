@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import UserForm,ProfileForm,PrescriptionForm,AppointmentForm,PatientForm,DoctorForm
+from .forms import UserForm,ProfileForm,PrescriptionForm,AppointmentForm,PatientForm,DoctorForm,ProfileForm1
 from .models import Profile,Patient,Doctor,Appointment,Prescription,Reception,HR
 from django.contrib.auth.models import auth,User
 from django.contrib.auth.decorators import login_required
@@ -139,16 +139,29 @@ def createapp(request):
 
 def createpat(request):
     if request.method == "POST":
+        u_form=UserForm(request.POST)
+        p_form=ProfileForm1(request.POST)
         form = PatientForm(request.POST)
-        if form.is_valid():
+        if form.is_valid() and u_form.is_valid() and p_form.is_valid():
+            p=u_form.save(commit=False)
+            username=p.username
+            p.save()
+            profile=p_form.save(commit=False)
+            profile.user=User.objects.get(username=username)
+            profile.save()
             post = form.save(commit=False)
-            person=request.user
-            post.user=Profile.objects.get(user=person)
+            post.user=Profile.objects.get(user=p)
             post.save()
             return redirect('dash')
-    else:
-        form = PatientForm()
-    return render(request, 'reception/createpat.html', {'form': form})
+    u_form=UserForm()
+    p_form=ProfileForm1()
+    form = PatientForm()
+    context={
+        'form':form,
+        'u_form':u_form,
+        'p_form':p_form
+    }
+    return render(request, 'reception/createpat.html',context)
 
 def ddashboard(request):
     doc=Doctor.objects.all()
@@ -160,13 +173,26 @@ def ddashboard(request):
 
 def createdoc(request):
     if request.method == "POST":
+        u_form=UserForm(request.POST)
+        p_form=ProfileForm1(request.POST)
         form = DoctorForm(request.POST)
-        if form.is_valid():
+        if form.is_valid() and u_form.is_valid() and p_form.is_valid():
+            p=u_form.save(commit=False)
+            username=p.username
+            p.save()
+            profile=p_form.save(commit=False)
+            profile.user=User.objects.get(username=username)
+            profile.save()
             post = form.save(commit=False)
-            person=request.user
-            post.user=Profile.objects.get(user=person)
+            post.user=Profile.objects.get(user=p)
             post.save()
             return redirect('ddash')
-    else:
-        form = DoctorForm()
-    return render(request, 'hr/createdoc.html', {'form': form})
+    u_form=UserForm()
+    p_form=ProfileForm1()
+    form = DoctorForm()
+    context={
+        'form':form,
+        'u_form':u_form,
+        'p_form':p_form
+    }
+    return render(request, 'hr/createdoc.html',context)

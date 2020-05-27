@@ -19,8 +19,8 @@ Status_choices = (
 
 class Profile(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)
-    Firstname=models.CharField(max_length=100)
-    Lastname=models.CharField(max_length=100)
+    Firstname=models.CharField(max_length=100,blank=True, null=True)
+    Lastname=models.CharField(max_length=100,blank=True, null=True)
     Email=models.EmailField(max_length=200)
     Phone=models.CharField(max_length=10)
     Registeras=models.CharField(max_length=30,blank=True, null=True,choices=category_choices)
@@ -29,24 +29,24 @@ class Profile(models.Model):
 
 class Patient(models.Model):
     user=models.ForeignKey(Profile,on_delete=models.CASCADE,limit_choices_to={'Registeras':"Patient"})
-    Name=models.CharField(max_length=100,default="Name")
+    Name=models.CharField(max_length=100,default=None)
     Age=models.IntegerField(default=0)
-    Gender=models.CharField(max_length=20,choices=Gender_choices,default="Gender")
-    Address=models.CharField(max_length=500,default="Address")
+    Gender=models.CharField(max_length=20,choices=Gender_choices,default=None)
+    Address=models.CharField(max_length=500,default=None)
     Outstanding=models.CharField(max_length=50,default=0)
     Paid=models.CharField(max_length=50,default=0)
-    BloodType=models.CharField(max_length=50,default="BloodType")
+    BloodType=models.CharField(max_length=50,default=None)
     def __str__(self):
         return self.Name
 
 class Doctor(models.Model):
     user=models.ForeignKey(Profile,on_delete=models.CASCADE,limit_choices_to={'Registeras':"Doctor"})
-    Name=models.CharField(max_length=100,default="Name")
+    Name=models.CharField(max_length=100,default=None)
     Age=models.IntegerField(default=0)
-    Gender=models.CharField(max_length=20,choices=Gender_choices,default="Gender")
-    Address=models.CharField(max_length=500,default="Address")
-    BloodType=models.CharField(max_length=50,default="BloodType")
-    Department=models.CharField(max_length=20,default="Doctor")
+    Gender=models.CharField(max_length=20,choices=Gender_choices,default=None)
+    Address=models.CharField(max_length=500,default=None)
+    BloodType=models.CharField(max_length=50,default=None)
+    Department=models.CharField(max_length=20,default=None)
     Salary=models.IntegerField(default=0)
     Attendance=models.IntegerField(default=0)
     def __str__(self):

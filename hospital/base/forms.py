@@ -36,3 +36,8 @@ class DoctorForm(forms.ModelForm):
         model=Doctor
         fields="__all__"
         exclude=["user"]
+
+class ProfileForm1(forms.ModelForm):
+    class Meta:
+        model=Profile
+        fields=["Email","Phone"]

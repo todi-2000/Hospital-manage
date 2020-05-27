@@ -4,7 +4,9 @@
 
 <form method="POST">
     {% csrf_token %}
+    {{ u_form|crispy }}
     {{ form|crispy }}
+    {{ p_form|crispy }}
     <button type="submit" action="{% url 'pre' %}">
             Submit
         </button>
