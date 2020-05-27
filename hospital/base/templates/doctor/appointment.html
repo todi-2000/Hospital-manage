@@ -1,0 +1,26 @@
+{% extends 'doctor/base.html' %}
+{% block content %}
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+      <th scope="col">Patient</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  {% for val in app %}
+  <tbody>
+    <tr>
+      <th scope="row">{{ val.date }}</th>
+      <td>{{ val.time }}</td>
+      <td>{{ val.Patient }}</td>
+      <td>{{ val.status }}</td>
+    </tr>
+  </tbody>
+  {% endfor %}
+</table>
+
+{% endblock %}

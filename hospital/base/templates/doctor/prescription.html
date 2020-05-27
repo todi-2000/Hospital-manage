@@ -1,0 +1,18 @@
+{% extends 'patient/base.html' %}
+{% block content %}
+<div class="page-header">
+            <a href="{% url 'pre_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus">Create</span></a>
+        </div>
+{% for post in pre %}
+    <div style="padding-left:10px;">
+    <div class="card" style="width: 25rem; padding-left:5px; padding-top: 5px;">
+    <div class="card-body">
+    <h5 class="card-title">Disease: {{ post.Disease }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">patient_username: {{ post.Patname }}</h6><br>
+    <p class="card-text">{{ post.prescription  }}</p>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+{% endblock %}

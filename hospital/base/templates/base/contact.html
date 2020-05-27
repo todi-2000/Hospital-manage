@@ -1,0 +1,72 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="super_container">
+	
+
+	<!-- Contact -->
+
+	<div class="contact">
+		<div class="container">
+			<div class="row">
+
+				<!-- Contact Info -->
+				<div class="col-lg-6">
+					<div class="section_title"><h2>Get in touch</h2></div>
+					<div class="contact_text">
+						<p>Our team will be happy to answer your questions.We will reach out to you as soon as possible</p>
+					</div>
+					<ul class="contact_about_list">
+						<li><div class="contact_about_icon"><p>Ph.</p></div><span>+91 995623543</span></li>
+						<li><div class="contact_about_icon"><p>M.</p></div><span>drcare62@gmail.com</span></li>
+						<li><div class="contact_about_icon"><p>Ad.</p></div><span>C block,Sector 62, Noida</span></li>
+					</ul>
+				</div>
+
+				<!-- Contact Form -->
+				<div class="col-lg-6 form_col">
+					<div class="contact_form_container">
+						<form action="#" id="contact_form" class="contact_form">
+							<div class="row">
+								<div class="col-md-6 input_col">
+									<div class="input_container input_name"><input type="text" class="contact_input" placeholder="Name" required="required"></div>
+								</div>
+								<div class="col-md-6 input_col">
+									<div class="input_container"><input type="email" class="contact_input" placeholder="E-mail" required="required"></div>
+								</div>
+							</div>
+							<div class="input_container"><input type="text" class="contact_input" placeholder="Subject" required="required"></div>
+							<div class="input_container"><textarea class="contact_input contact_text_area" placeholder="Message" required="required"></textarea></div>
+							<button class="button contact_button"><a href="#">send</a></button>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="row map_row">
+				<div class="col">
+
+					<!-- Contact Map -->
+
+					<div class="contact_map">
+
+						<!-- Google Map -->
+						
+						<div class="map">
+							<div id="google_map" class="google_map">
+								<div class="map_container">
+									<div id="map"></div>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

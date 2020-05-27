@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dr Care</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
+  <script src={% static "js/jquery-3.2.1.min.js" %}></script>
+  <script src={% static "styles/bootstrap4/popper.js" %}></script>
+  <script src={% static "styles/bootstrap4/bootstrap.min.js" %}></script>
+  <script src={% static "plugins/OwlCarousel2-2.2.1/owl.carousel.js" %}></script>
+  <script src={% static "plugins/easing/easing.js" %}></script>
+  <script src={% static "plugins/parallax-js-master/parallax.min.js" %}></script>
+  <script src={% static "js/custom.js" %}></script>
+  <script src={% static "js/contact.js" %}></script>
+  <link rel="stylesheet" type="text/css" href="{% static "styles/bootstrap4/bootstrap.min.css" %}">
+  <link href={% static "plugins/font-awesome-4.7.0/css/font-awesome.min.css" %} rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href={% static "plugins/OwlCarousel2-2.2.1/owl.carousel.css" %}>
+  <link rel="stylesheet" type="text/css" href={% static "plugins/OwlCarousel2-2.2.1/owl.theme.default.css" %}>
+  <link rel="stylesheet" type="text/css" href={% static "plugins/OwlCarousel2-2.2.1/animate.css" %}>
+  <link rel="stylesheet" type="text/css" href={% static "styles/contact.css" %}>
+  <link rel="stylesheet" type="text/css" href={% static "styles/main_styles.css" %}>
+  <link rel="stylesheet" type="text/css" href={% static "styles/responsive.css" %}>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <a class="navbar-brand" href="#">Dr. Care</a>
+
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'home' %}">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'register' %}">Register</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'login' %}">Login</a>
+    </li>
+  </ul>
+</nav>
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

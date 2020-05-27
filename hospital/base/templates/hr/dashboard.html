@@ -1,0 +1,30 @@
+{% extends 'hr/base.html' %}
+{% block content %}
+
+<div class="container">
+        <a class="btn btn-primary" href="{% url 'doc_new' %}" role="button">Create a Doctor</a>
+        <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Department</th>
+            <th scope="col">Salary</th>
+            </tr>
+        </thead>
+        {% for val in doc %}
+        <tbody>
+            <tr>
+            <th scope="row">{{ val.Name }}</th>
+            <td>{{ val.user.Email }}</td>
+            <td>{{ val.user.Phone }}</td>
+            <td>{{ val.Department }}</td>
+            <td>{{ val.Salary }}</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}

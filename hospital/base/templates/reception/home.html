@@ -1,0 +1,200 @@
+{% extends 'reception/base.html' %}
+{% load static %}
+{% block content %}
+	<!-- Home -->
+
+	<div class="home">
+		<div class="home_slider_container">
+			<!-- Home Slider -->
+			<div class="owl-carousel owl-theme home_slider">
+				
+				<!-- Slider Item -->
+				<div class="owl-item">
+					<div class="home_slider_background" style="background-image:url({% static "images/home_background_2.jpg" %})"></div>
+					<div class="home_content">
+						<div class="container">
+							<div class="row">
+								<div class="col">
+									<div class="home_content_inner">
+										<div class="home_title"><h1>Exceptional Care Close to You.</h1></div>
+										<div class="home_text">
+											<p>We provide patient treatment with specialized medical and nursing staff and medical equipment.Also, A standard intensive care unit (ICU) within a hospita</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+            	<div class="home_slider_progress"></div>
+		</div>
+	</div>
+
+	<div class="boxes">
+		<div class="container">
+			<div class="row">
+				
+				<!-- Box -->
+				<div class="col-lg-4 box_col">
+					<div class="box working_hours">
+						<div class="box_icon d-flex flex-column align-items-start justify-content-center"><div style="width:29px; height:29px;"></div></div>
+						<div class="box_title">Working Hours</div>
+						<div class="working_hours_list">
+							<ul>
+								<li class="d-flex flex-row align-items-center justify-content-start">
+									<div>Monday – Friday</div>
+									<div class="ml-auto">8.00 – 19.00</div>
+								</li>
+								<li class="d-flex flex-row align-items-center justify-content-start">
+									<div>Saturday</div>
+									<div class="ml-auto">9.30 – 17.00</div>
+								</li>
+								<li class="d-flex flex-row align-items-center justify-content-start">
+									<div>Sunday</div>
+									<div class="ml-auto">9.30 – 15.00</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<!-- Box -->
+				<div class="col-lg-4 box_col">
+					<div class="box box_appointments">
+						<div class="box_icon d-flex flex-column align-items-start justify-content-center"><div style="width: 29px; height:29px;"></div></div>
+						<div class="box_title">Appointments</div>
+						<div class="box_text">Choosing a day where you have more flexibility will make it all much less stressful.</div>
+					</div>
+				</div>
+
+				<!-- Box -->
+				<div class="col-lg-4 box_col">
+					<div class="box box_emergency">
+						<div class="box_icon d-flex flex-column align-items-start justify-content-center"><div style="width: 37px; height:37px; margin-left:-4px;"></div></div>
+						<div class="box_title">Emergency Cases</div>
+						<div class="box_phone">+91 9934567721</div>
+						<div class="box_emergency_text">Don’t worry, we are there for you.Offering quality healthcare is our only priority.</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- About -->
+
+	<div class="about">
+		<div class="container">
+			<div class="row row-lg-eq-height">
+				
+				<!-- About Content -->
+				<div class="col-lg-7">
+					<div class="about_content">
+						<div class="section_title"><h2>A great medical team to help your needs</h2></div>
+						<div class="about_text">
+							<p>The doctors and nurses are readily available there for admitting and attending on their patients. The dedicated teams of doctors and nurses delivers the message of hope to their patients in our hospitals.The doctors and nurses do their work with a dedication and maintains the pleasant atmosphere of the hospital so that our patients feel comfortable and better.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- About Image -->
+				<div class="col-lg-5">
+					<div class="about_image"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Services -->
+
+	<div class="services">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="section_title"><h2>Our Featured Services</h2></div>
+				</div>
+			</div>
+			<div class="row services_row">
+				
+				<!-- Service -->
+				<div class="col-lg-4 col-md-6 service_col">
+					<a href="services.html">
+						<div class="service text-center trans_200">
+							<div class="service_icon"><img class="svg" src={% static "images/service_1.png" %} alt=""></div>
+							<div class="service_title trans_200">Free Checkups</div>
+							<div class="service_text">
+								<p>We have free BP and sugar check-up facilities at all PHCs.</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<!-- Service -->
+				<div class="col-lg-4 col-md-6 service_col">
+					<a href="services.html">
+						<div class="service text-center trans_200">
+							<div class="service_icon"><img class="svg" src={% static "images/service_2.png" %} alt=""></div>
+							<div class="service_title trans_200">Screening Exams</div>
+							<div class="service_text">
+								<p>A screening test is done to detect potential health disorders</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<!-- Service -->
+				<div class="col-lg-4 col-md-6 service_col">
+					<a href="services.html">
+						<div class="service text-center trans_200">
+							<div class="service_icon"><img class="svg" src={% static "images/service_3.png" %} alt=""></div>
+							<div class="service_title trans_200">RMI Services</div>
+							<div class="service_text">
+								<p>RMI operates worldwide providing medical support services for individuals </p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<!-- Service -->
+				<div class="col-lg-4 col-md-6 service_col">
+					<a href="services.html">
+						<div class="service text-center trans_200">
+							<div class="service_icon"><img class="svg" src={% static "images/service_4.png" %} alt=""></div>
+							<div class="service_title trans_200">Dentistry</div>
+							<div class="service_text">
+								<p>The health science that deals with prevention and treatment of damage and disease to the oral cavity</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<!-- Service -->
+				<div class="col-lg-4 col-md-6 service_col">
+					<a href="services.html">
+						<div class="service text-center trans_200">
+							<div class="service_icon"><img class="svg" src={% static "images/service_5.png" %} alt=""></div>
+							<div class="service_title trans_200">Neonatology</div>
+							<div class="service_text">
+								<p>Neonatology is a subspecialty in paediatric care that deals with the medical care</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<!-- Service -->
+				<div class="col-lg-4 col-md-6 service_col">
+					<a href="services.html">
+						<div class="service text-center trans_200">
+							<div class="service_icon"><img class="svg" src={% static "images/service_6.png" %} alt=""></div>
+							<div class="service_title trans_200">Biochemistry</div>
+							<div class="service_text">
+								<p>Biochemistry is the branch of science that explores related to living organisms.</p>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

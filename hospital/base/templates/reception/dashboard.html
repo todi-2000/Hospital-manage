@@ -1,0 +1,60 @@
+
+{% extends 'reception/base.html' %}
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+        <a class="btn btn-primary" href="{% url 'app_new' %}" role="button">Create an Appointment</a>
+        <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+            <th scope="col">Doctor</th>
+            <th scope="col">Patient</th>
+            <th scope="col">Status</th>
+            </tr>
+        </thead>
+        {% for val in app %}
+        <tbody>
+            <tr>
+            <th scope="row">{{ val.date }}</th>
+            <td>{{ val.time }}</td>
+            <td>{{ val.Doctor }}</td>
+            <td>{{ val.Patient }}</td>
+            <td>{{ val.status }}</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+        </table>
+    </div>
+    <div class="col-sm">
+        <a class="btn btn-primary" href="{% url 'pat_new' %}" role="button">Create a Patient</a>
+        <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Email</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Age</th>
+            </tr>
+        </thead>
+        {% for val in pat %}
+        <tbody>
+            <tr>
+            <th scope="row">{{ val.Name }}</th>
+            <td>{{ val.user.Phone }}</td>
+            <td>{{ val.user.Email }}</td>
+            <td>{{ val.Age }}</td>
+            <td>{{ val.Gender }}</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+        </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
