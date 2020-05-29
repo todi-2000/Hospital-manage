@@ -3,5 +3,5 @@
 /.vscode
 __pycache__
 env
-hospital/base/static
+/base/static
 .DS_Store
