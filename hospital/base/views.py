@@ -4,6 +4,7 @@ from .models import Profile,Patient,Doctor,Appointment,Prescription,Reception,HR
 from django.contrib.auth.models import auth,User
 from django.contrib.auth.decorators import login_required
 # Create your views here.
+
 def home(request):
     return render(request,'base/home.html')
 
@@ -55,13 +56,14 @@ def login(request):
         if user is not None:
             auth.login(request,user)
             user1=User.objects.get(username=username)
+            profile=Profile.objects.get(user=user1)
             if Reception.objects.filter(user=user1).exists():
                 return redirect('rhome')
             elif HR.objects.filter(user=user1).exists():
                 return redirect('hhome')
-            elif Profile.objects.get(user=user1).Registeras=="Patient":
+            elif Patient.objects.filter(user=profile).exists():
                 return redirect('phome')
-            elif Profile.objects.get(user=user1).Registeras=="Doctor":
+            elif Doctor.objects.filter(user=profile).exists():
                 return redirect('dhome')
         else:
             return redirect('login')
@@ -77,13 +79,13 @@ def appointment(request):
         name=request.user.username
         profile=User.objects.get(username=name)
         patient=Profile.objects.get(user=profile)
-        if patient.Registeras=="Patient":
+        if Patient.objects.filter(user=patient).exists():
             id=Patient.objects.get(user=patient).id
             app=Appointment.objects.filter(Patient_id=id)
             return render(request,'patient/appointment.html',{'app':app})
-        elif patient.Registeras=="Doctor":
+        elif Doctor.objects.filter(user=patient).exists():
             id=Doctor.objects.get(user=patient).id
-            app=Appointment.objects.filter(Patient_id=id)
+            app=Appointment.objects.filter(Doctor_id=id)
             return render(request,'doctor/appointment.html',{'app':app})
     else:
         return redirect('login')
@@ -93,13 +95,13 @@ def prescription(request):
         name=request.user.username
         profile=User.objects.get(username=name)
         patient=Profile.objects.get(user=profile)
-        if patient.Registeras=="Patient":
+        if Patient.objects.filter(user=patient).exists():
             id=Patient.objects.get(user=patient).id
             pre=Prescription.objects.filter(Patname_id=id)
             return render(request,'patient/mh.html',{'pre':pre})
-        elif patient.Registeras=="Doctor":
-            id=Doctor.objects.get(user=patient).id
-            pre=Prescription.objects.filter(Patname_id=id)
+        elif Doctor.objects.filter(user=patient).exists():
+            name=Doctor.objects.get(user=patient)
+            pre=Prescription.objects.filter(Docname=name)
             return render(request,'doctor/prescription.html',{'pre':pre})
     else:
          return redirect('login')
@@ -116,7 +118,7 @@ def pre_new(request):
         form = PrescriptionForm()
     return render(request, 'doctor/form_edit.html', {'form': form})
 
-@login_required
+@login_required(login_url='/login/')
 def dashboard(request):
     app=Appointment.objects.all()
     pat=Patient.objects.all()
@@ -163,6 +165,7 @@ def createpat(request):
     }
     return render(request, 'reception/createpat.html',context)
 
+@login_required(login_url='/login/')
 def ddashboard(request):
     doc=Doctor.objects.all()
     context={

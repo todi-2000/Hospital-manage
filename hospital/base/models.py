@@ -63,7 +63,7 @@ class Appointment(models.Model):
         return self.date
 
 class Prescription(models.Model):
-    Docname=models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    Docname=models.ForeignKey(Doctor, on_delete=models.CASCADE)
     prescription=models.TextField(max_length=200)
     Disease=models.TextField(max_length=50)
     Patname=models.ForeignKey(Patient,on_delete=models.CASCADE)
