@@ -28,7 +28,7 @@ class Profile(models.Model):
         return self.user.username
 
 class Patient(models.Model):
-    user=models.ForeignKey(Profile,on_delete=models.CASCADE,limit_choices_to={'Registeras':"Patient"})
+    user=models.ForeignKey(Profile,on_delete=models.CASCADE)
     Name=models.CharField(max_length=100,default=None)
     Age=models.IntegerField(default=0)
     Gender=models.CharField(max_length=20,choices=Gender_choices,default=None)
@@ -40,7 +40,7 @@ class Patient(models.Model):
         return self.Name
 
 class Doctor(models.Model):
-    user=models.ForeignKey(Profile,on_delete=models.CASCADE,limit_choices_to={'Registeras':"Doctor"})
+    user=models.ForeignKey(Profile,on_delete=models.CASCADE)
     Name=models.CharField(max_length=100,default=None)
     Age=models.IntegerField(default=0)
     Gender=models.CharField(max_length=20,choices=Gender_choices,default=None)
