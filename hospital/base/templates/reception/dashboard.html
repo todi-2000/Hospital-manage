@@ -4,7 +4,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm">
+    <div class="col-sm-4">
         <a class="btn btn-primary" href="{% url 'app_new' %}" role="button">Create an Appointment</a>
         <table class="table">
         <thead>
@@ -29,7 +29,7 @@
         {% endfor %}
         </table>
     </div>
-    <div class="col-sm">
+    <div class="col-sm-8">
         <a class="btn btn-primary" href="{% url 'pat_new' %}" role="button">Create a Patient</a>
         <table class="table">
         <thead>
@@ -39,6 +39,8 @@
             <th scope="col">Email</th>
             <th scope="col">Gender</th>
             <th scope="col">Age</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
             </tr>
         </thead>
         {% for val in pat %}
@@ -47,8 +49,10 @@
             <th scope="row">{{ val.Name }}</th>
             <td>{{ val.user.Phone }}</td>
             <td>{{ val.user.Email }}</td>
-            <td>{{ val.Age }}</td>
             <td>{{ val.Gender }}</td>
+            <td>{{ val.Age }}</td>
+            <td><a class="btn btn-info" href="#" role="button">Update</a></td>
+            <td><a class="btn btn-danger" href="#" role="button">Delete</a></td>
             </tr>
         </tbody>
         {% endfor %}

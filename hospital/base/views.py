@@ -124,7 +124,7 @@ def prescription(request):
 def pre_new(request):
     if request.user.is_authenticated:
         profile=Profile.objects.get(user=request.user)
-        if Doctor.objects.get(user=profile).exists():
+        if Doctor.objects.filter(user=profile).exists():
             if request.method == "POST":
                 form = PrescriptionForm(request.POST)
                 if form.is_valid():
@@ -150,7 +150,7 @@ def dashboard(request):
 
 def createapp(request):
     if request.user.is_authenticated:
-        if Reception.objects.get(user=request.user).exists():
+        if Reception.objects.filter(user=request.user).exists():
             if request.method == "POST":
                 form = AppointmentForm(request.POST)
                 if form.is_valid():
@@ -168,7 +168,7 @@ def createapp(request):
 @login_required(login_url='/login/')
 def createpat(request):
     if request.user.is_authenticated:
-        if Reception.objects.get(user=request.user).exists():
+        if Reception.objects.filter(user=request.user).exists():
             if request.method == "POST":
                 u_form=UserForm(request.POST)
                 p_form=ProfileForm1(request.POST)
@@ -207,7 +207,7 @@ def ddashboard(request):
 @login_required(login_url='/login/')
 def createdoc(request):
     if request.user.is_authenticated:
-        if HR.objects.get(user=request.user).exists():
+        if HR.objects.filter(user=request.user).exists():
             if request.method == "POST":
                 u_form=UserForm(request.POST)
                 p_form=ProfileForm1(request.POST)
@@ -234,3 +234,4 @@ def createdoc(request):
             return render(request, 'hr/createdoc.html',context)
         else:
             return redirect('login')
+
