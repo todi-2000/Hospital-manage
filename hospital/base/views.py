@@ -251,6 +251,19 @@ def profile_update(request,pk):
                 'p_form':p_form
             }
             return render(request,'reception/profile_update.html',context)
+        elif HR.objects.filter(user=request.user).exists():
+            pprofile=get_object_or_404(Doctor,pk=pk)
+            if request.method=="POST":
+                p_form=DoctorForm(request.POST,instance=pprofile)
+                if p_form.is_valid():
+                    p_form.save()
+                return redirect('ddash')
+            else:
+                p_form=DoctorForm(instance=pprofile)
+            context={
+                'p_form':p_form
+            }
+            return render(request,'hr/profile_update.html',context)
 
 def profile_delete(request,pk):
     if request.user.is_authenticated:
@@ -263,3 +276,12 @@ def profile_delete(request,pk):
                 return redirect('dash')
             else:
                 return render(request,'reception/profile_delete.html')
+        elif HR.objects.filter(user=request.user).exists():
+            pprofile=get_object_or_404(Doctor,pk=pk)
+            profile=get_object_or_404(Profile,pk=pprofile.user.pk)
+            user=get_object_or_404(User,pk=profile.user.pk)
+            if request.method=="POST":
+                user.delete()
+                return redirect('ddash')
+            else:
+                return render(request,'hr/profile_delete.html')
