@@ -1,0 +1,27 @@
+{% extends 'patient/base.html' %}
+{% block content %}
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Invoice</th>
+      <th scope="col">Date</th>
+      <th scope="col">Paid</th>
+      <th scope="col">Outstanding</th>
+    </tr>
+  </thead>
+  {% for val in pat %}
+  <tbody>
+    <tr>
+      <th scope="row"><a href="<img src={{ val.invoice }}>">Open invoice</a></th>
+      <td>{{ val.Date }}</td>
+      <td>{{ val.paid }}</td>
+      <td>{{ val.outstanding }}</td>
+    </tr>
+  </tbody>
+  {% endfor %}
+</table>
+
+
+{% endblock %}

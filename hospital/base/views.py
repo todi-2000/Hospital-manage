@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .forms import UserForm,ProfileForm,PrescriptionForm,AppointmentForm,PatientForm,DoctorForm,ProfileForm1
-from .models import Profile,Patient,Doctor,Appointment,Prescription,Reception,HR
+from .models import Profile,Patient,Doctor,Appointment,Prescription,Reception,HR,Accounts
 from django.contrib.auth.models import auth,User
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -285,3 +285,14 @@ def profile_delete(request,pk):
                 return redirect('ddash')
             else:
                 return render(request,'hr/profile_delete.html')
+
+@login_required(login_url='/login/')
+def payments(request):
+    user=request.user
+    profile=get_object_or_404(Profile,user=user)
+    user1=get_object_or_404(Patient,user=profile)
+    patient=Accounts.objects.filter(user=user1)
+    context={
+        'pat':patient
+    }
+    return render(request,'patient/payments.html',context)

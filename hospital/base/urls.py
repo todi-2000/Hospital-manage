@@ -21,4 +21,5 @@ urlpatterns = [
     path('doc/new/',views.createdoc,name='doc_new'),
     path('profile/<int:pk>/edit/', views.profile_update, name='profile_update'),
     path('profile/<int:pk>/delete/', views.profile_delete, name='profile_delete'),
+    path('patient/payments/',views.payments,name='payment'),
 ]

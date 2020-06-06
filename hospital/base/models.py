@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.utils import timezone
 # Create your models here.
 category_choices = ( 
     ("Patient", "Patient"),
@@ -74,3 +75,10 @@ class Reception(models.Model):
 
 class HR(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
+
+class Accounts(models.Model):
+    user=models.ForeignKey(Patient,on_delete=models.CASCADE)
+    Date=models.DateTimeField()
+    paid=models.IntegerField(default=0)
+    outstanding=models.IntegerField(default=0)
+    invoice=models.ImageField(upload_to='patient_invoice')
