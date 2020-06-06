@@ -51,8 +51,8 @@
             <td>{{ val.user.Email }}</td>
             <td>{{ val.Gender }}</td>
             <td>{{ val.Age }}</td>
-            <td><a class="btn btn-info" href="#" role="button">Update</a></td>
-            <td><a class="btn btn-danger" href="#" role="button">Delete</a></td>
+            <td><a class="btn btn-info" href="{% url 'profile_update' pk=val.pk %}" role="button">Update</a></td>
+            <td><a class="btn btn-danger" href="{% url 'profile_delete' pk=val.pk %}" role="button">Delete</a></td>
             </tr>
         </tbody>
         {% endfor %}

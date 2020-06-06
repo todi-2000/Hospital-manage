@@ -1,0 +1,13 @@
+{% extends 'reception/base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{ p_form|crispy }}
+    <button type="submit" action="{% url 'dash' %}">
+            Submit
+        </button>
+</form>
+
+{% endblock %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from .forms import UserForm,ProfileForm,PrescriptionForm,AppointmentForm,PatientForm,DoctorForm,ProfileForm1
 from .models import Profile,Patient,Doctor,Appointment,Prescription,Reception,HR
 from django.contrib.auth.models import auth,User
@@ -235,3 +235,31 @@ def createdoc(request):
         else:
             return redirect('login')
 
+
+def profile_update(request,pk):
+    if request.user.is_authenticated:
+        if Reception.objects.filter(user=request.user).exists():
+            pprofile=get_object_or_404(Patient,pk=pk)
+            if request.method=="POST":
+                p_form=PatientForm(request.POST,instance=pprofile)
+                if p_form.is_valid():
+                    p_form.save()
+                return redirect('dash')
+            else:
+                p_form=PatientForm(instance=pprofile)
+            context={
+                'p_form':p_form
+            }
+            return render(request,'reception/profile_update.html',context)
+
+def profile_delete(request,pk):
+    if request.user.is_authenticated:
+        if Reception.objects.filter(user=request.user).exists():
+            pprofile=get_object_or_404(Patient,pk=pk)
+            profile=get_object_or_404(Profile,pk=pprofile.user.pk)
+            user=get_object_or_404(User,pk=profile.user.pk)
+            if request.method=="POST":
+                user.delete()
+                return redirect('dash')
+            else:
+                return render(request,'reception/profile_delete.html')
