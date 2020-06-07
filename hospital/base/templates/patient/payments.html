@@ -14,7 +14,7 @@
   {% for val in pat %}
   <tbody>
     <tr>
-      <th scope="row"><a href="<img src={{ val.invoice }}>">Open invoice</a></th>
+      <th scope="row"><a href="{{ val.invoice.url }}" target="_blank">Open invoice</a></th>
       <td>{{ val.Date }}</td>
       <td>{{ val.paid }}</td>
       <td>{{ val.outstanding }}</td>

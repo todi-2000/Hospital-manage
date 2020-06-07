@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect,get_object_or_404
-from .forms import UserForm,ProfileForm,PrescriptionForm,AppointmentForm,PatientForm,DoctorForm,ProfileForm1
+from .forms import UserForm,ProfileForm,PrescriptionForm,AppointmentForm,PatientForm,DoctorForm,ProfileForm1,AccountForm
 from .models import Profile,Patient,Doctor,Appointment,Prescription,Reception,HR,Accounts
 from django.contrib.auth.models import auth,User
 from django.contrib.auth.decorators import login_required
+from django import forms
 # Create your views here.
 
 def home(request):
@@ -242,13 +243,22 @@ def profile_update(request,pk):
             pprofile=get_object_or_404(Patient,pk=pk)
             if request.method=="POST":
                 p_form=PatientForm(request.POST,instance=pprofile)
-                if p_form.is_valid():
+                a_form=AccountForm(data=request.POST,files=request.FILES)
+                if p_form.is_valid() and a_form.is_valid():
                     p_form.save()
-                return redirect('dash')
+                    a=a_form.save(commit=False)
+                    a.user=pprofile
+                    print(a)
+                    a.save()
+                    return redirect('dash')
+                else:
+                    print(a_form.errors)
             else:
                 p_form=PatientForm(instance=pprofile)
+                a_form=AccountForm()
             context={
-                'p_form':p_form
+                'p_form':p_form,
+                'a_form':a_form
             }
             return render(request,'reception/profile_update.html',context)
         elif HR.objects.filter(user=request.user).exists():
@@ -296,3 +306,13 @@ def payments(request):
         'pat':patient
     }
     return render(request,'patient/payments.html',context)
+
+@login_required(login_url='/login/')
+def accounting(request):
+    if HR.objects.filter(user=request.user).exists():
+        context={
+            'account':Accounts.objects.all(),
+            'pat':Patient.objects.all()
+        }
+        return render(request,'hr/account.html',context)
+

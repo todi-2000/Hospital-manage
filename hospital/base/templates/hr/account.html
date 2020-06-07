@@ -1,0 +1,58 @@
+{% extends 'hr/base.html' %}
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+        <a class="btn btn-primary" href="#" role="button">Individual Oustanding</a>
+        <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Patient</th>
+            <th scope="col">Paid</th>
+            <th scope="col">Outstanding</th>
+            </tr>
+        </thead>
+        {% for val in pat %}
+        <tbody>
+            <tr>
+            <td>{{ val.Name }}</td>
+            <td>{{ val.Paid }}</td>
+            <td>{{ val.Outstanding }}</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+        </table>
+    </div>
+    <div class="col-sm-8">
+        <a class="btn btn-primary" href="#" role="button">Consultation Outstanding</a>
+        <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Patient</th>
+            <th scope="col">Paid</th>
+            <th scope="col">Outstanding</th>
+            <th scope="col">Total</th>
+            <th scope="col">Invoice</th>
+            </tr>
+        </thead>
+        {% for val in account %}
+        <tbody>
+            <tr>
+            <th scope="row">{{ val.Date }}</th>
+            <td>{{ val.user }}</td>
+            <td>{{ val.paid }}</td>
+            <td>{{ val.outstanding }}</td>
+            <td>{{ val.paid |add:val.outstanding }}</td>
+            <td><a href="{{ val.invoice.url }}" target="_blank">Open invoice</a></td>
+            
+            </tr>
+        </tbody>
+        {% endfor %}
+        </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

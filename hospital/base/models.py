@@ -30,24 +30,24 @@ class Profile(models.Model):
 
 class Patient(models.Model):
     user=models.ForeignKey(Profile,on_delete=models.CASCADE)
-    Name=models.CharField(max_length=100,default=None)
+    Name=models.CharField(max_length=100,default="None")
     Age=models.IntegerField(default=0)
-    Gender=models.CharField(max_length=20,choices=Gender_choices,default=None)
-    Address=models.CharField(max_length=500,default=None)
+    Gender=models.CharField(max_length=20,choices=Gender_choices,default="None")
+    Address=models.CharField(max_length=500,default="None")
     Outstanding=models.CharField(max_length=50,default=0)
     Paid=models.CharField(max_length=50,default=0)
-    BloodType=models.CharField(max_length=50,default=None)
+    BloodType=models.CharField(max_length=50,default="None")
     def __str__(self):
         return self.Name
 
 class Doctor(models.Model):
     user=models.ForeignKey(Profile,on_delete=models.CASCADE)
-    Name=models.CharField(max_length=100,default=None)
+    Name=models.CharField(max_length=100,default="None")
     Age=models.IntegerField(default=0)
-    Gender=models.CharField(max_length=20,choices=Gender_choices,default=None)
-    Address=models.CharField(max_length=500,default=None)
-    BloodType=models.CharField(max_length=50,default=None)
-    Department=models.CharField(max_length=20,default=None)
+    Gender=models.CharField(max_length=20,choices=Gender_choices,default="None")
+    Address=models.CharField(max_length=500,default="None")
+    BloodType=models.CharField(max_length=50,default="None")
+    Department=models.CharField(max_length=20,default="None")
     Salary=models.IntegerField(default=0)
     Attendance=models.IntegerField(default=0)
     def __str__(self):
